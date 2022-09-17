@@ -18,13 +18,18 @@ class BagMain {
         // TODO: Implement this.
         int len = bags.length;
         int i;
-        for (i = 0; i < len; i++){
-            if (double_enhance_handbags){
-                bags[i].increaseCapacity(2);
-            }
-
+        for (i = 0; i < len; i++) {
+            if (double_enhance_handbags) {
+                if(bags[i] instanceof HandBag){
+                    bags[i].enhance();
+            }}
+            bags[i].enhance();
         }
     }
+
+
+
+
 
     /**
      * TODO: Implement this method
@@ -41,7 +46,7 @@ class BagMain {
         int total = 0;
         for (i = 0; i < bags.length; i++){
             if (bags[i] instanceof CrossbodyBag){
-                total =+ ((CrossbodyBag) bags[i]).straps;
+                total += ((CrossbodyBag) bags[i]).straps;
             }
         }
         return total;

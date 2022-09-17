@@ -5,6 +5,8 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.util.ArrayList;
+
 public abstract class Bag {
     /*
      * TODO: Create the following private instance variables
@@ -28,11 +30,11 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
-    public Bag(String colour, int b){
+    public Bag(String colour, int capacity){
         this.color = colour;
-        this.capacity = b;
+        this.capacity = capacity;
         this.numberOfContents = 0;
-        this.content = new String[b];
+        this.content = new String[capacity];
 
     }
 
@@ -79,11 +81,12 @@ public abstract class Bag {
      *       This method should return true if the item was added
      *       and false otherwise.
      */
-    public boolean addItem(String x){
+    public boolean addItem(String item){
         int len = this.content.length;
-        this.content[len - 1] = x;
+        this.content[len - 1] = item;
         if (this.numberOfContents < this.capacity){
-            this.content[this.numberOfContents + 1] = x;
+            this.content[this.numberOfContents + 1] = item;
+            this.numberOfContents += 1;
             return true;
         }else{
             return false;
@@ -104,26 +107,18 @@ public abstract class Bag {
      * @return
      */
 
-    public Object popItem(String y){
+    public Object popItem(){
         int len = this.numberOfContents;
-        String[] copy = this.content;
-        int flag = 0;
+        String[] copy = new String[this.capacity];
         int i;
-        int n;
-        for (i = 0, n = 0; i < len; i++){
-            if(!(copy[i].equals(y))){
-                this.content[n] = copy[i];
-                n++;
-            } else {
-                this.content[n] = null;
-                flag += 1;
-        }}
-        this.numberOfContents -= 1;
-        if (flag != 1){
-            return null;
-        }else {
-            return y;
+        for (i = 0; i < len; i++){
+            copy[i] = this.content[i];
         }
+        i++;
+        String popped = this.content[i];
+        this.content = copy;
+        this.numberOfContents -= 1;
+        return popped;
     }
 
 
