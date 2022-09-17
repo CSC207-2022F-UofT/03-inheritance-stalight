@@ -16,6 +16,14 @@ class BagMain {
      */
     public static void enhanceBags(Bag[] bags, boolean double_enhance_handbags) {
         // TODO: Implement this.
+        int len = bags.length;
+        int i;
+        for (i = 0; i < len; i++){
+            if (double_enhance_handbags){
+                bags[i].increaseCapacity(2);
+            }
+
+        }
     }
 
     /**
@@ -29,5 +37,13 @@ class BagMain {
      */
     public static int countCrossbodyStraps(Bag[] bags) {
         // TODO: Implement this.
+        int i;
+        int total = 0;
+        for (i = 0; i < bags.length; i++){
+            if (bags[i] instanceof CrossbodyBag){
+                total =+ ((CrossbodyBag) bags[i]).straps;
+            }
+        }
+        return total;
     }
 }
