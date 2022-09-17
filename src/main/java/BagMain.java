@@ -46,4 +46,5 @@ class BagMain {
         }
         return total;
     }
+
 }
